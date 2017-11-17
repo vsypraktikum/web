@@ -1,0 +1,5 @@
+eclipse.preferences.version=1
+encoding//test/app/application.py=utf-8
+encoding//webteams/app/application.py=utf-8
+encoding//webteams/app/database.py=utf-8
+encoding//webteams/app/view.py=utf-8
