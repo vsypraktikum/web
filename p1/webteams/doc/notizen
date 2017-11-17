@@ -1,0 +1,64 @@
+To-Do
+------------
+CSS-Datei erstellen
+view 2 Exceptions
+	1 CreateList
+	1 CreateForm
+	
+database
+	Create-Funktion Exception - Überprüfen der Daten
+	Update-Funktion - Überprüfen der Daten
+	Delete_px komplett
+	
+	
+application
+	save-Funktion - Überprüfung der korrekten Daten
+
+Änderungen
+-------------
+
+application.py
+	Hinzufügen der Semesteranzahl
+		Zeile 50
+		Zeile 54
+		
+database.py
+	Hinzufügen von Platzhalter für Semester
+		Zeile 78
+		Zeile 89
+		
+	Löschen-Funktion
+		Zeile 71-73
+
+view.py
+	Hinzufügen von Semester in CreateList, sowie änderung der Arrayelemente
+		Zeile 38
+		Zeile 42
+		
+	Hinzufügen von Semester in CreateForm, sowie änderung der Arrayelemente
+		Zeile 59
+		Zeile 63	
+		
+form1.tpl
+	Hinzufügen der Semesteranzahl
+		Zeile 19-22
+	
+form2.tpl
+	Hinzufügen Abbrechen-Button
+		Zeile 4
+
+list0.tpl
+	Hinzufügen der Semesteranzahl
+		Zeile 19
+		Zeile 23
+	
+list1.tpl
+	Hinzufügen der Semesteranzahl
+		Zeile 7
+		Zeile 11
+		
+webteams.css
+	Alles
+	
+webteams.js
+		Zeile 5 -8 Abfrage löschen

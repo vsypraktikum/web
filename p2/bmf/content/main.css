@@ -1,0 +1,26 @@
+html {
+	box-sizing: border-box;
+}
+
+*,
+::before,
+::after {
+	box-sizing: inherit;
+}
+
+header {	
+	background-color: #729fcf;
+	border-size: 5px;
+	border-color: black;
+}
+
+#header_links{
+	DF1JBmeuiLV2tgoH
+	padding:10px;
+	float: left;
+}
+
+#header_rechts {
+	padding: 20px;
+	magin: 10px;
+}
