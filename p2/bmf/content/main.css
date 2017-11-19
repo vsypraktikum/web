@@ -1,26 +1,93 @@
-html {
-	box-sizing: border-box;
+
+/* Style Grundlage
+    Christian Brouwers
+*/
+
+
+* {
+	padding: 0;
+    margin: 0;
 }
 
-*,
-::before,
-::after {
-	box-sizing: inherit;
+div#wrapper {
+    position:relative;
+    width: 1500px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-header {	
+/* Style Header*/
+header {
+    position: relative;
 	background-color: #729fcf;
-	border-size: 5px;
-	border-color: black;
+    color: white;
+    height: 65px;
 }
 
 #header_links{
-	DF1JBmeuiLV2tgoH
-	padding:10px;
-	float: left;
+    width: 25%;
+    border-bottom: 1px;
+    border-top: 1px;
+    border-left: 1px;
+    border-right: 1px;
+    border-color: white;
+    border-style: solid;
+    text-align: left;
+    margin-bottom: 25px;
+    background-color: #729fcf;
+    height: 65px;
 }
 
+/*DF1JBmeuiLV2tgoH*/
 #header_rechts {
-	padding: 20px;
-	magin: 10px;
+    width: 75%;
+    border-bottom: 1px;
+    border-top: 1px;
+    border-left: 1px;
+    border-right: 1px;
+    border-color: white;
+    border-style: solid;
+    text-align: right;
+    position: absolute;
+    top: 0px;
+    left: 25%;
+    bottom: 00px;
+}
+
+/*Style Navi*/
+nav > p ,
+#pflege,
+#aw,
+#teilnahme,
+#content{
+    border-bottom: 1px;
+    border-top: 1px;
+    border-left: 1px;
+    border-right: 1px;
+    border-color: black;
+    border-style: solid;
+}
+
+nav {
+    position: relative;
+    width: 25%;
+}
+
+nav *{
+    padding: 2px;
+}
+
+.aw_navi,
+.teilnahme_navi {
+    list-style-type: "-";
+    list-style-position: inside;
+}
+
+main {
+    width: 75%;
+    position: absolute;
+    top: 65px;
+    left: 25%;
 }
