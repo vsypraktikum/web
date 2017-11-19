@@ -34,6 +34,38 @@ class Database_cl(object):
                 self.saveData_p() 
                 break
         return id_s
+    
+    def readMitarbeiter_px(self, id_spl = None): 
+        mitarbeiterListe = {}
+        for i in sorted(self.data_o):
+            name = self.data_o[i]['name']
+            vorname = self.data_o[i]['vorname']
+            akagra = self.data_o[i]['akadem']
+            taetigkeit = self.data_o[i]['taetigkeit']
+            
+            mitarbeiter = {"name": name, "vorname" : vorname, "akagra" : akagra, "taetigkeit" : taetigkeit}
+            #mitarbeiter nach Namen sortieren
+            mitarbeiterListe[i] = mitarbeiter
+            
+            mitarbeiterListe[i]["name"].sort(key=name)
+            
+            return mitarbeiterListe
+    
+        # hier zur Vereinfachung: 
+        # Aufruf ohne id: alle Einträge liefern 
+        data_o = None 
+        if id_spl == None: 
+            data_o = self.data_o 
+        else: 
+            if id_spl in self.data_o: 
+                data_o = self.data_o[id_spl]
+        return data_o
+    
+    def addMitarbeiter_px(self, id_spl, data_opl):
+        self.data_o[str(id_spl)]["act_i"] += 1
+        self.data_o[str(id_spl)]["name"].append(data_opl)
+        
+        self.saveMitarbeiter_p()
     #------------------------------------------------------
     def read_px(self, id_spl = None): 
     #------------------------------------------------------
@@ -96,10 +128,14 @@ class Database_cl(object):
                 self.data_o = json.load(fp_o)
         return
     #------------------------------------------------------
-    
-    def saveData_p(self): 
-        #------------------------------------------------------
+    def saveMitarbeiter_px(self): 
+        with codecs.open(os.path.join('data', 'mitarbeiter.json'), 'w', 'utf-8') as fp_o: 
+            json.dump(self.data_o, fp_o)
+            
+    def saveData_p(self):
         with codecs.open(os.path.join('data', 'webteams.json'), 'w', 'utf-8') as fp_o: 
             json.dump(self.data_o, fp_o)
+            
+            
 # EOF
 

@@ -10,27 +10,40 @@ import json
 import string
 import cherrypy
 
-from .database import Database_cl 
-from .view import View_cl
 from enum import Enum
 
-from __main__ import name
-class Mitarbeiter(object):
-    name = ' '
-    vorname = ' '
-    akadem = ' '
-    taetigkeit = ' '
+def __init__(self): 
     
-    def MA(self):
-        pass
+    pass
 
+class Mitarbeiter(object):
+    
+    
+    def createMitarbeiter_E(self, data_opl):
+        markup_s = '' 
+        markup_s += self.readFile_p('list0.tpl')
+        
+        markupV_s = self.readFile_p('list1.tpl') 
+        lineT_o = string.Template(markupV_s) 
+        # mehrfach nutzen, um die einzelnen Zeilen der Tabelle zu erzeugen 
+        for id_s in data_opl: 
+            data_a = data_opl[str(id_s)] 
+            markup_s += lineT_o.safe_substitute (name=data_a[0] # HIER müssen Sie eine Ergänzung vornehmen - erl
+            ,   vorname=data_a[1] 
+            ,   akagra=data_a[2]
+            ,   taetigkeit=data_a[3] 
+            )
+        markup_s += self.readFile_p('list2.tpl')
+        
+        return self.create_p('liste.tpl', data_opl) #markup_s 
+        
 class Weiterbildung(object):
-    bezeichnung = ' '
+    bz_w = ' '
     von = ' '
     bis = ' '
-    beschreibung = ' '              #txt = string?
-    maximale = ' '                  #int = string?
-    minimale = ' '                  #int = string?
+    bs_w = ' '                      #txt = string?
+    max = ' '                  #int = string?
+    min = ' '                  #int = string?
     
     def WB(self):
         pass
@@ -39,7 +52,7 @@ class Teilnahme(Enum):
     angemeldet = 1
     nimmtteil = 2
     storniert = 3
-    angebrochen = 4
+    abgebrochen = 4
     nichterfolgreich = 5
     erfolgreich = 6
     
@@ -47,23 +60,24 @@ class Teilnahme(Enum):
         pass
     
 class Zertifikat(object):
-    bezeichnung = ' '
-    beschreibung = ' '              #txt = string?
+    bz_z = ' '
+    bs_z= ' '              #txt = string?
     berechtigung = ' '
     
     def ZF(self):
         pass
 
 class Qualifikation(object):
-    bezeichnung = ' '
-    beschreibung = ' '              #txt = string?
+    bz_q = ' '
+    bs_q = ' '              #txt = string?
     
     def QA(self):
         pass
     
+#EoF
     
-#Dateioperation, von python in json
-#irgendwas stimmt mit eclipse noch nicht 
+    
+
     
    
     
