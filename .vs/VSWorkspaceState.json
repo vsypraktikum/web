@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\p1",
+    "\\p1\\webteams",
+    "\\p1\\webteams\\content",
+    "\\p2",
+    "\\p2\\bmf",
+    "\\p2\\bmf\\app",
+    "\\p2\\bmf\\content",
+    "\\p2\\bmf\\content\\Auswertungen",
+    "\\p2\\bmf\\content\\Teilnahme"
+  ],
+  "SelectedNode": "\\p2\\bmf\\server.py",
+  "PreviewInSolutionExplorer": false
+}
