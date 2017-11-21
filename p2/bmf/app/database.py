@@ -1,6 +1,6 @@
 # coding: utf-8
 import os 
-import os.path 
+import os.path
 import codecs
 import json
 #---------------------------------------------------------

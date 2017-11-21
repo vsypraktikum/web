@@ -1,43 +1,43 @@
 # coding: utf-8
 import cherrypy
 
-from .database import Database_cl 
+from .database import Database_cl
 from .view import View_cl
 from .Erstellen import Mitarbeiter
 
 #---------------------------------------------------------
-class Application_cl(object): 
+class Application_cl(object):
 #---------------------------------------------------------
 
     #------------------------------------------------------
     def __init__(self):
     #------------------------------------------------------
         # spezielle Initialisierung können hier eingetragen werden 
-        self.db_o = Database_cl() 
+        self.db_o = Database_cl()
         self.view_o = View_cl()
-    @cherrypy.expose 
+    @cherrypy.expose
     
     #------------------------------------------------------
-    def index(self): 
+    def index(self):
     #------------------------------------------------------
         return self.createList_p()
     
-    @cherrypy.expose 
+    @cherrypy.expose
     #------------------------------------------------------
     def add(self):
     #------------------------------------------------------
         return self.createForm_p()
     
-    @cherrypy.expose 
+    @cherrypy.expose
   
     #------------------------------------------------------
-    def edit(self, id): 
+    def edit(self, id):
     #------------------------------------------------------
         return self.createForm_p(id)
     
     @cherrypy.expose
     #------------------------------------------------------
-    def save(self, **data_opl): 
+    def save(self, **data_opl):
     #------------------------------------------------------
         # Sichern der Daten: aufgrund der Formularbearbeitung muss 
         # eine vollständige HTML-Seite zurückgeliefert werden!
@@ -45,34 +45,34 @@ class Application_cl(object):
         # hier müsste man prüfen, ob die Daten korrekt vorliegen!
         # HIER müssen Sie die Semesterzahl(en) ergänzen -erl
         id_s = data_opl["id_s"]
-        data_a = [ data_opl["name1_s"] 
+        data_a = [ data_opl["name1_s"]
         ,   data_opl["vorname1_s"]
         ,   data_opl["matrnr1_s"]
         ,   data_opl["sem1_s"]
-        ,   data_opl["name2_s"] 
-        ,   data_opl["vorname2_s"] 
+        ,   data_opl["name2_s"]
+        ,   data_opl["vorname2_s"]
         ,   data_opl["matrnr2_s"]
         ,   data_opl["sem2_s"]
         
         ]
-        if id_s != "None": 
-            # Update-Operation 
-            self.db_o.update_px(id_s, data_a) 
+        if id_s != "None":
+            # Update-Operation
+            self.db_o.update_px(id_s, data_a)
         else:
-            # Create-Operation 
+            # Create-Operation
             id_s = self.db_o.create_px(data_a)
     
         return self.createForm_p(id_s)
 
-    @cherrypy.expose 
+    @cherrypy.expose
     #------------------------------------------------------
     def delete(self, id):
     #------------------------------------------------------
         # Eintrag löschen, dann Liste neu anzeigen
-        self.db_o.delete_px(id) 
+        self.db_o.delete_px(id)
         return self.createList_p()
 
-    @cherrypy.expose 
+    @cherrypy.expose
     #------------------------------------------------------
     def default(self, *arguments, **kwargs): 
     #------------------------------------------------------
