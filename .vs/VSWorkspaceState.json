@@ -1,13 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\p1\\webteams",
-    "\\p1\\webteams\\content",
     "\\p2",
     "\\p2\\bmf",
-    "\\p2\\bmf\\app",
     "\\p2\\bmf\\content"
   ],
-  "SelectedNode": "\\p2\\bmf\\app\\applicationneu.py",
+  "SelectedNode": "\\p2\\bmf\\content\\start.html",
   "PreviewInSolutionExplorer": false
 }
