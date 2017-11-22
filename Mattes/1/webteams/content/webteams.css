@@ -1,0 +1,27 @@
+html{
+	
+}
+
+
+body{
+	font-family: "Georgia, Serif";
+	border: 1px solid;
+	border-radius: 5px;
+	padding: 20px;
+	width: auto;
+}
+
+
+table tr td {
+	width: 200px;
+	border: 0px;
+	Background-color: #D8D8D8;
+}
+table th { 
+	border:1px solid;
+	border-radius: 5px;
+}
+
+#box{
+	background-color: #D8D8D8;
+}

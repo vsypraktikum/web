@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<p>Dokumentation 1 Praktikumstermin 13.10.2016 David Krus, Mathis Rudolf</p>
+<ol type="1">
+<li>Aufbau der Webannwendung</li>
+</ol>
+<p>Dateien und Verzeichnisstruktur:</p>
+<ul>
+<li>webteams
+<ul>
+<li>server.py</li>
+<li>app
+<ul>
+<li><strong>init</strong>.py //Kennzeichnet Verzeichnis als Pythonpackage</li>
+<li>application.py //Anwendungslogik</li>
+<li>database.py //Datenbanklogik</li>
+<li>view.py //Praesentation -__pycache</li>
+</ul></li>
+<li>content
+<ul>
+<li>form0.tpl //Template für HTML</li>
+<li>form1.tpl</li>
+<li>form2.tpl</li>
+<li>list0.tpl</li>
+<li>list1.tpl</li>
+<li>list2.tpl</li>
+<li>webteams.css // Designvorschriften</li>
+<li>webteams.js // Javascript Funktionssammlung</li>
+</ul></li>
+<li>data
+<ul>
+<li>webteams.json // Datenbank</li>
+</ul></li>
+<li>doc
+<ul>
+<li>a.mk</li>
+<li>b.html</li>
+<li>webteams.md // Dokumentation</li>
+</ul></li>
+</ul></li>
+</ul>
+<ol start="2" type="1">
+<li><p>Ergänzungen:</p>
+<ul>
+<li><p>Erweiterung des Formulares in form1.tpl.</p></li>
+<li><p>Ergaenzung in den Funktionen createList_px und createForm_px aus der Datei view.py um die Semesterzahlen beider Studenten. Sowie in den Funktionen getDefault_px und readData_p die Arrays um zwei leere stellen ergaenzt werden mussten.</p></li>
+<li><p>Formular mit &quot;Abbrechen&quot; Button in form2.tpl eingefuegt.</p></li>
+<li><p>Veraenderungen an Body und Table-Elementen mit Hilfe von CSS, ausgelagert in die Datei &quot;webteams.css&quot;.</p></li>
+<li><p>Ergaenzen der Funktion delete_px in der Datei &quot;database.py&quot; innerhalb der if-Verzweigung um die Zeilen: self.data_o[id_spl] = self.getDefault_px() self.saveData_p() status_b = True</p></li>
+<li><p>Ergaenzung der Funktion confirmDelete_p in Datei webteams.js um die Zeilen: if(confirm(&quot;Are you sure?&quot;)){ alert(&quot;deleted&quot;) }else{ event_opl.preventDefault(); }</p></li>
+</ul></li>
+<li><p>Beschreibung des HTTP Datenverkehrs</p>
+<ul>
+<li>Start der anwendung:
+<ul>
+<li><img src="1.png" title="fig:" alt="abc" /></li>
+</ul></li>
+<li>Speichern:
+<ul>
+<li><img src="2.png" title="fig:" alt="abc" /></li>
+</ul></li>
+</ul></li>
+</ol>
+</body>
+</html>

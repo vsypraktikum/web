@@ -32,7 +32,7 @@
                 <p><a href="">Startseite</a></p>
 
                 <div id="pflege">
-                    <p class="pfelge"><a href="pm.html">Pflege Mitarbeiterdaten</a></p>
+                    <p class="pfelge"><a href="/index">Pflege Mitarbeiterdaten</a></p>
                     <p class="pfelge"><a href="pw.html">Pflege Weiterbildung</a></p>
                 </div>
                 <div id="teilnahme">

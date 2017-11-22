@@ -1,0 +1,17 @@
+{
+   "fix": {
+      "empid": "3",
+      "beschreibung": "Nichts",
+      "katid": "2",
+      "datum": "12.1.2017"
+   },
+   "bug": {
+      "empid": "2",
+      "beschreibung": "Nichts",
+      "katid": "2",
+      "datum": "12.1.2017"
+   },
+   "status": "behoben",
+   "kompid": "6",
+   "zustand": "Pr\u00fcfung Erfolgreich"
+}

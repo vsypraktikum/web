@@ -1,0 +1,67 @@
+h1 {
+	background-color: #B9BEFF;
+	text-align: center;
+	margin: 0px;
+}
+
+select {
+	width: 156px;
+}
+input {
+	width: 150px;
+}
+
+th {
+	width: 150px;
+	background-color: grey;
+}
+
+
+.navContainer {
+	background-color: #B9BEFF;
+	width: 100%;
+}
+
+.contentContainer {
+	position: relative;
+	width: 100%;
+	top: 10px;
+	
+}
+
+.likeabutton {
+	float: left;
+    text-decoration: none; font: menu;
+    padding: 2px 8px;
+	width: 150px;
+    background: ButtonFace; color: ButtonText;
+    border-style: solid; border-width: 1px;
+    border-color: ButtonHighlight ButtonShadow ButtonShadow ButtonHighlight;
+}
+.likeabutton:active {
+    border-color: ButtonShadow ButtonHighlight ButtonHighlight ButtonShadow;
+}
+
+.labelBox {
+	float: left;
+	width: 150px;
+}
+.inputBox {
+	
+}
+
+.Mark {
+	background-color: #E6E6E6;
+}
+
+.noMark {
+	background-color: white;
+}
+
+.PPAktuell {
+	background-color: #66ccff;
+}
+
+.PPAbgeschlossen {
+	background-color: #E6E6E6;
+}
