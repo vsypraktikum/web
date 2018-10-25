@@ -1,0 +1,19 @@
+<!-- Template -->
+<!-- Contentbereich -->
+<form id="topicsData">
+	<h2>@if context!=null@ #context['Bezeichnung']# @endif@</h2>
+	<div>
+		<h2>@if context!=null@ #context['Titel']# @endif@</h2>
+		<h6>erstellt am: @if context!=null@ #context['Datum_Erstellung']# @endif@</h6>
+		<h6>geändert am: @if context!=null@ #context['Datum_Aenderung']# @endif@</h6>
+	</div>
+	<div>
+		<textarea id="Text" disabled cols="200" rows="10">@if context!=null@ #context['Text']# @endif@</textarea>
+	</div>
+	<div>
+		<textarea id="Kategorien" disabled cols="200" rows="5">@if context!=null@ #context['Kategorien']# @endif@</textarea>
+	</div>
+    <button id="idBack">Zurück</button>
+	<button id="topicbearbeiten" @if context!=null@ data-id="#context['id']#" @endif@">Bearbeiten</button>
+</form>
+<!-- EOF -->

@@ -1,0 +1,7 @@
+            <div>
+                <input type="submit" value="Speichern"/>
+                <input type="reset" value="Abbrechen" onclick="history.back()"/><!-- Abbrechen Button -->
+            </div>
+        </form>
+    </body>
+</html>

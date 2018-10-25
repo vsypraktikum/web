@@ -1,0 +1,18 @@
+<!-- Template -->
+<!-- Contentbereich -->
+<h3>Übersicht der Geburtstage:</h3>
+<table>
+        <tr><th>Name</th><th>Vorname</th><th>Geburtsdatum</th><th>Alter</th></tr>
+        @var entry_a;@
+        @var loop_i;@
+        @for loop_i = 0; loop_i < context.length-1; loop_i++@
+           @entry_a = context[loop_i];@
+           <tr id="#entry_a['id']#">
+              <td>#entry_a['Name']#</td>
+              <td>#entry_a['Vorname']#</td>
+              <td>#entry_a['Geburtsdatum']#</td>
+              <td>#entry_a['Alter']#</td>
+           </tr>
+        @endfor@
+     </table>
+     <!-- EOF -->

@@ -1,0 +1,49 @@
+Json
+xml processin instruction
+css selektoren
+test webapplikationen
+konzept textfluss
+inline elemente
+blocklevel elemente
+probleme bei präsentation
+web applikationen Architektur (aufteilung client/server)
+MVC-ansatz
+rest
+get/post(unterschied)
+css basiseigenschaften + level
+Dom
+Topic maps
+sicherheitsprobleme
+test- begriffe (was ist fehler usw.)
+Klassisch funktionale tests
+integrationsstrategien
+funktionaler systemtest
+web spez. test
+xhtml
+xml
+css-float / clear
+box model
+prototype eingenschaft js + beispiel
+background image
+horizontaleboxen (code)
+webworker + anwendungszweck
+ajax (wasist + aufbau + vor/nachteile)
+formular ohne submit (code)
+eventfunktionen
+URI mapping (cpy)
+ziele html5 + features
+ontologien
+rdf
+uri
+http eigenschaften + schema
+publish subscibe + wie eingesetzt bei seinem es
+Responsive Design
+Media Queries
+js vererbung  (auch bei prototype bei)
+jsobjekte
+fehler markieren (code)
+nachladen ajax (code)
+flexboxen responsive design (code)
+cpy aufgabe mit mako (code)
+
+

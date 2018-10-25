@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h1 id="web-praktikum-2-gruppe-c">WEB Praktikum 2 Gruppe C</h1>
+<h2 id="joey-laschet-und-lukas-van-gemmeren">Joey Laschet und Lukas van Gemmeren</h2>
+<h2 id="aufbau-der-webanwendung">1. Aufbau der Webanwendung</h2>
+<h3 id="framework">Framework</h3>
+<p>Verwendetes Framework: CherryPi - ein einfaches Web Framework um Webanwendungen objektorientiert in der Sprache Python zu erstellen.</p>
+<h3 id="server.py">server.py</h3>
+<p>Startet den CherryPi Server, dient außerdem zur Konfiguration des Servers. Static Konfiguration für einige Elemente und das Mounten von 3 Klassen. (Siehe Konfiguration)</p>
+<h3 id="application.py">application.py</h3>
+<p>Stellt die Basis der Anwendung, von hier aus gelangt man in die Besucher und Sachbearbeiterklasse.</p>
+<h3 id="besucher.py">Besucher.py</h3>
+<p>Stellt die Methoden für einen Besucher bereit, wie etwa das anzeigen, buchen und stornieren von Veranstaltungen. Ruft Hauptsächlich Bview.py Methoden und die der Datenbank auf.</p>
+<h3 id="sachbearbeiter.py">Sachbearbeiter.py</h3>
+<p>Stellt alle Funktionen für den Sachbearbeiter bereit. Neben dem hinzufügen/löschen/bearbeiten von Veranstaltungen gibt es die Möglichkeit einzelne Teilobjekte aus denen Veranstaltungen bestehen zu bearbeiten, wie etwa Kategorien, Orte und Künstler. Ruft Hauptsächlich Sview.py Methoden und die der Datenbank auf.</p>
+<h3 id="sview.py">Sview.py</h3>
+<p>Stellt die Methoden bereit, um aus den Templates für den Sachbearbeiter fertigen Code zu erzeugen. Benutzt Template Engine Mako.</p>
+<h3 id="bview.py">Bview.py</h3>
+<p>Stellt die Methoden bereit, um aus den Templates für den Besucher fertigen Code zu erzeugen. Benutzt Template Engine Mako.</p>
+<h3 id="database.py">database.py</h3>
+<p>Verwaltung der Datenbank im Server. Diese Funktionen stellt die Schnittstelle zwischen dem Webserver und den zu verarbeitenden Daten dar. In diesem Fall werden die Daten sortiert nach Kategorien in .json abgelegt und zur Laufzeit in Dictionairies gehalten.</p>
+<h3 id="templates-und-content-ordner">templates und content Ordner</h3>
+<p>In diesem Ordner befinden sich alle Template Dateien, für jede mögliche Website eine. Weiterhin befinden sich eine JavaScript Datei für eine interaktive Benutzeroberfläche und eine CSS-Datei zum formatieren der Webseite.</p>
+<h2 id="datenablage">Datenablage</h2>
+<h3 id="json-dateien">.json Dateien</h3>
+<p>In dieser vom Server angelegten Datei werden die Eingabedaten abgespeichert und auf Anfrage ausgelesen und in die Formulare/Templates eingebettet. Jede Datei stellt dabei eine Kategorie dar, wie etwa Veranstaltungen, Orte, Künstler und Besucher. In den Dictionairies befinden sich Arrays um alle Bestandteile der Daten zu trennen.</p>
+<h2 id="konfiguration">Konfiguration</h2>
+<h3 id="static">Static</h3>
+<p>Statisch abgelegt wird die Allgemeingültige CSS Datei und die Javascript Datei die eine Sicherheitsabfrage vor dem Löschen bereitstellt.</p>
+<h3 id="gemountete-module">Gemountete Module</h3>
+<p>Die Wurzel / wird durch die Application.py dargestellt, welche nur die oberste Startseite bereitstellt. Sie hat keine Funktion außer die Sachbearbeiter und Besucher Klassen zu initialisieren. Sachbearbeiter und Besucher stellen die eigentliche Anwendung bereit, aufgeteilt in 2 Bereiche für 2 Benutzer.</p>
+</body>
+</html>

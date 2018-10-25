@@ -1,0 +1,33 @@
+<!-- Template -->
+<!-- Contentbereich -->
+<table>
+   <tr><th>Titel</th><th>Erstellungsdatum</th><th>Änderungsdatum</th><th>Anzahl der Änderungen</th><th>Tags</th></tr>
+   @var entry_a;@
+   @var loop_i;@
+   @var loop_j;@
+   @var test;@
+   @var test1;@
+   @var index='tag';@
+   @var temp=context[0];@
+   @var temp1= temp[0];@
+   @for loop_i = 0; loop_i < temp1.length; loop_i++@
+      @test=temp1[loop_i]['tag'].length;@
+      @entry_a = temp1[loop_i];@
+      <tr id="#entry_a['id']#">
+      
+         
+         <td>#entry_a['title']#</td>
+         <td>#entry_a['crdat']#</td>
+         <td>#entry_a['chdat']#</td>
+         <td>#entry_a['change']#</td>
+         <td>
+         @for loop_j = 0; loop_j < test; loop_j++@
+            #entry_a['tag'][loop_j]#
+         
+         @endfor@
+         </td>
+      </tr>
+   @endfor@
+</table>
+<button id="idShowListEntry">Anzeigen</button>
+<!-- EOF -->

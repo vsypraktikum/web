@@ -1,0 +1,50 @@
+class AuswertungProjekte_cl(object):
+            # ----------------------------------------------------------
+
+            # -------------------------------------------------------
+            def __init__(self):
+                # -------------------------------------------------------
+                self.db_o = DokumentDatabase_cl()
+
+            # -------------------------------------------------------
+            def GET(self, id):
+                # -------------------------------------------------------
+                retVal_o = {
+                    'data': None
+                }
+                if id == None:
+                    # Anforderung der Liste
+                    retVal_o['data'] = db_o.getDocList()
+                else:
+                    # Anforderung eines Dokuments
+                    data_o = self.db_o.read_px(id)
+                    if data_o != None:
+                        retVal_o['data'] = adjustId_p(id, data_o)
+                tmp = retVal_o['data'] <---- Bei Beims Templateengine wäre diese "data" das Dictionary für die Templateengine
+                return createView("DocList.tpl", tmp)
+
+DocList.tpl:
+
+
+Mako-Templame-Variante:
+
+% for id_s in sorted(data_o.keys()):
+<tr>
+	<td>${tmp[id_s]['Dokumentnummer']}</td>
+	<td>${tmp[id_s]['Dokumentbezeichnung']}</td>
+	<td>${tmp[id_s]['Kurzbeschreibung']}</td>
+
+</tr>
+% endfor
+
+
+Beims-Template-Engine-Variante:
+
+      @var rows_doc = context['data'];@
+      @for var key_s in rows_o@
+         <tr>
+         @var row_doc = rows_doc[key_s];@
+            <td>#row_doc['Dokumentname']#</td><td>#row_doc['Documentbezeichnung']#</td><td>#row_doc['Kurzbeschreibung']#</td>
+         </tr>
+      @endfor@
+

@@ -1,0 +1,22 @@
+<html>
+<head>
+</head>
+<body>
+
+<script type="text/javascript">
+//window.onload=function(){document.getElementById('div123').addEventListener("click",showClick_p()};
+window.onload=function(){document.getElementById('div123').onclick=showClick_p();}
+
+function showClick_p(event_opl){
+var curr_o = event_opl.currentTarget;
+var source_o=event_opl.target;
+alert('Click durch: ' + source_o.id + ' Aktuelles Element: ' + curr_o.id;
+if (!confirm('Click durch: ' source_o.id + ' Aktuelles Element: ' + +curr_o.id + ' bestätigen?')){
+event_opl.stopproragation();}
+}
+
+</script>
+<div id="div123"> bla böa   </div>
+
+</body>
+</html>

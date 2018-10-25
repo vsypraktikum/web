@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<body>
+<style type="text/css">
+.fehler{background-color:red};
+</style>
+<script type="text/javascript">
+
+
+
+window.onload=function(){
+document.getElementById("input1").addEventListener("blur",test);
+}
+function test(){
+var inputfeld = document.getElementById("input1");
+if (inputfeld.value!=12)
+inputfeld.className="fehler";
+else inputfeld.className="richtig";
+}
+</script>
+
+<input type="text" id="input1">
+
+
+</body>
+</html>

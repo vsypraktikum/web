@@ -1,0 +1,14 @@
+<!-- Template -->
+<!-- Contentbereich -->
+<h2>Alle Themen in Kategorie</h2>
+<ul>
+   @var entry_a;@
+   @var loop_i;@
+   @for loop_i = 0; loop_i < context.length; loop_i++@
+      @entry_a = context[loop_i];@
+		<li>
+			<a href="##" class="tagtopics" id="#entry_a['id']#">#entry_a['Bezeichnung']#</a>
+		</li>
+   @endfor@
+</ul>   
+<!-- EOF -->

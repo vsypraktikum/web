@@ -1,0 +1,5 @@
+/* Stilregel */
+/* in allen Absätzen grüne Schrift */
+p { color : green; } 
+/* nur in diesen Absätzen rote Schrift */
+.Wichtig { color : red; } 

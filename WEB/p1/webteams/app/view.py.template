@@ -1,0 +1,48 @@
+# coding: utf-8
+
+# sehr einfache Erzeugung des Markups für vollständige Seiten
+# jeweils 3 Abschnitte:
+# - begin
+# - content
+# - end
+
+# bei der Liste wird der content-Abschnitt wiederholt
+# beim Formular nicht
+
+import codecs
+import os.path
+import string
+from mako.template import Template
+from mako.lookup import TemplateLookup
+
+#----------------------------------------------------------
+class View_cl(object):
+#----------------------------------------------------------
+
+    #-------------------------------------------------------
+    def __init__(self):
+    #-------------------------------------------------------
+        # Pfad hier zur Vereinfachung fest vorgeben
+        self.path_s = "C:\\Users\\Mark\\Python_Projects\\web\\p1\\webteams\\template"
+        self.lookup_o = TemplateLookup(directories=self.path_s)
+    
+    # ... weitere Methoden
+    
+    #-------------------------------------------------------
+    def create_p(self, template_spl, data_opl):
+    #-------------------------------------------------------
+        # Auswertung mit templates
+        template_o = self.lookup_o.get_template(template_spl)
+        # mit der Methode render wird das zuvor 'übersetzte' Template ausgeführt
+        # data_o sind die im Template angegebenen Daten
+        # data_opl die übergebenen Daten
+        
+        markup_s = template_o.render(data_o = data_opl)
+        return markup_s
+            
+    #-------------------------------------------------------
+    def createList_px(self, data_opl):
+    #-------------------------------------------------------
+        return self.create_p('liste.tpl', data_opl)
+        
+# EOF

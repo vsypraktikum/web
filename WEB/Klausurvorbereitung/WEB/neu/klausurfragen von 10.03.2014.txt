@@ -1,0 +1,25 @@
+Unterschied bock und inlineelement
+    Unterschied div HTML 5 Section
+    größe text im div und div selbst
+css ul alle listenelemente sollen hoizontal ausgerichtet sein und liststyle=none
+Menü per Mediatag bei Duckansicht von HMTL Seite nicht anzeigen.
+    bestimmte bereiche sollen nicht gedruckt werden.
+
+wie werden objekte in java erstellt und wie funktioniert vererbung mittels vererbungsherachie?
+    (nur eine der 3 varianten von vererbung in javascript)
+AJAX erklären
+    2Buttons bei sollen daten über einen ajaxrequest vom server holen
+    die daten rechts ausgeben
+    buttong 1 sollst noch einen benutzertext als attribut mit an den server senden
+    jquery proxy wie im web3 praktikum
+    
+REST erklären
+    Python REST Ansatz
+
+erklärung semantisches web mit beispielen
+
+attribut class im html element erklären
+
+unterschied postition absolute und fixed
+
+unterschied $.ID selector und irgentwas von javascript

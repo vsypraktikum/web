@@ -1,0 +1,22 @@
+<!-- Template -->
+<!-- Contentbereich -->
+<form id="topicsData">
+    <h2>@if context!=null@ #context['Bezeichnung']# @endif@</h2>
+	<input type="hidden" name="Bezeichnung" @if context!=null@ value="#context['Bezeichnung']#" @endif@/>
+	<h6>erstellt am: @if context!=null@ #context['Datum_Erstellung']# @endif@</h6>
+	<input type="hidden" name="Datum_Erstellung" @if context!=null@ value="#context['Datum_Erstellung']#" @endif@/>
+	<h6>geändert am: @if context!=null@ #context['Datum_Aenderung']# @endif@</h6>	
+	<div>
+		<input type="text" id="Titel" name="Titel" @if context!=null@ value="#context['Titel']#" @endif@/>
+	</div>
+	<div>
+		<textarea id="Text" name="Text" cols="200" rows="10">@if context!=null@ #context['Text']# @endif@</textarea>
+	</div>
+	<div>
+		<textarea id="Kategorien" name="Kategorien" cols="200" rows="5">@if context!=null@ #context['Kategorien']# @endif@</textarea>
+	</div>
+    <button id="idBack">Zurück</button>
+	<button id="topicspeichern" @if context!=null@ data-id="#context['id']#" @endif@>Speichern</button>
+	<button id="topicloeschen" @if context!=null@ data-id="#context['id']#" @endif@>Löschen</button>
+</form>
+<!-- EOF -->

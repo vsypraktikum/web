@@ -1,0 +1,16 @@
+python-Code:
+
+Application.py:
+def __init__(self, path_spl):
+	db_o = Database_cl(os.path.join(path_spl, 'data'))
+	view_o = View_cl(os.path.join(path_spl, 'templates'))
+	self.notes = Notes_cl(db_o, view_o)
+	
+Notes.py:
+def __init__(self, db_opl, view_opl):
+	self.db_o = db_opl
+	self.view_o = view_opl
+
+	
+	
+	

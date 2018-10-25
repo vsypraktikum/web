@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<p>Name: Mark Hilsendegen <br />
+Matrikelnummer: 1121869 <br />
+Gruppe: B <br />
+Datum: 23.10.2017 </p>
+<p><strong>Aufbau der Webanwendung:</strong></p>
+<p>Eine Liste mit der Daten von Studenten erfasst, bearbeitet und gelöscht werden können.</p>
+<p>Aufbau der Liste:</p>
+<ol type="1">
+<li>Name,<br />
+</li>
+<li>Vorname,<br />
+</li>
+<li>Matrikelnummer,<br />
+</li>
+<li>Semesteranzahl,<br />
+</li>
+<li>Name,<br />
+</li>
+<li>Vorname,<br />
+</li>
+<li>Matrikelnummer,<br />
+</li>
+<li>Semesteranzahl</li>
+</ol>
+<p><strong>Verzeichnisstruktur:</strong></p>
+<pre><code> web    
+    /p1     
+        /webteams     
+            /app     
+                /_init_.py &lt;-- Initialisierung     
+                /application.py &lt;-- Anwendung     
+                /database.py &lt;-- Datenbasis     
+                /view.py &lt;-- Sicht     
+            /content     
+                /form0.tpl &lt;-- Formulare     
+                /form1.tpl     
+                /form2.tpl     
+                /list0.tpl &lt;-- Liste     
+                /list1.tpl     
+                /list2.tpl     
+                /webteams.css     
+                /webteams.js            
+            /data     
+                /webteams.json &lt;-- Daten     
+            /doc     </code></pre>
+<p><strong>Durchgeführte Ergänzungen:</strong></p>
+<ul>
+<li>Dateneingabe für die Daten des 2. Team-Mitglieds im Formular<br />
+</li>
+<li>zusätzliches Attribut &quot;Semesteranzahl&quot; (für beide Teammitglieder) in allen Listen und Formularen<br />
+sowie in der Datenbasis<br />
+</li>
+<li>Aktion &quot;Abbrechen&quot; im Formular implementiert<br />
+</li>
+<li>Gestaltung mit CSS: CSS-Stilregeln in die Datei webteams.css eingetragen<br />
+</li>
+<li>Löschen der Daten eines Teams auf der Serverseite implementiert (siehe Datei database.py)<br />
+</li>
+<li>Rückfrage an den Benutzer beim Löschen von Einträgen in der Liste Datei webteams.js</li>
+</ul>
+<p><strong>Beschreibung des Datenverkehrs:</strong></p>
+<p>Start der Anwendung:</p>
+<p>Es werden drei Anfragen an die Adresse http://localhost:8080/ geschickt:</p>
+<p>127.0.0.1 - - [23/Oct/2017:22:40:56] &quot;GET / HTTP/1.1&quot; 200 5198 &quot;&quot; &quot;Mozilla/5.0 (Windows NT 10.0; WOW64; rv:56.0) Gecko/20100101 Firefox/56.0&quot;<br />
+127.0.0.1 - - [23/Oct/2017:22:40:56] &quot;GET /webteams.js HTTP/1.1&quot; 304 - &quot;http://localhost:8080/&quot; &quot;Mozilla/5.0 (Windows NT 10.0; WOW64; rv:56.0) Gecko/20100101 Firefox/56.0&quot;<br />
+127.0.0.1 - - [23/Oct/2017:22:40:56] &quot;GET /webteams.css HTTP/1.1&quot; 304 - &quot;http://localhost:8080/&quot; &quot;Mozilla/5.0 (Windows NT 10.0; WOW64; rv:56.0) Gecko/20100101 Firefox/56.0&quot;<br />
+Die GET-Befehle laden die HTML-Seite, das Javaskript und die CSS-Daten.</p>
+<p>Beim Speichern von Formulardaten:</p>
+<p>Die Formulardaten werden mit dem POST Befehl abgeschickt:</p>
+<p>127.0.0.1 - - [23/Oct/2017:22:42:58] &quot;POST /save HTTP/1.1&quot; 200 2307 &quot;http://localhost:8080/add&quot; &quot;Mozilla/5.0 (Windows NT 10.0; WOW64; rv:56.0) Gecko/20100101 Firefox/56.0&quot;</p>
+</body>
+</html>

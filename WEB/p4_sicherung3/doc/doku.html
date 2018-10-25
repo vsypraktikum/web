@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<p>Name: Mark Hilsendegen <br />
+Matrikelnummer: 1121869 <br />
+Gruppe: B <br />
+Datum: 05.02.2018 </p>
+<p><strong>Allgemeine Beschreibung der Lösung:</strong></p>
+<p>Aufgabe der Anwendung:</p>
+<p>Mit der Webanwendung wird ein Wiki bereitgestellt mit dem man Themen erstellen und pflegen kann. Mit einem Klick auf die Links wird eine Detailbeschreibung des Themas geöffnet. Kategorien können einem Thema zugeordnet werden.</p>
+<p>Übersicht der fachlichen Funktionen:</p>
+<p>Mit der Anwendung soll es möglich sein, neben der Datenpﬂege auch verwaiste und fehlende Themen zu finden:</p>
+<p>• fehlende Themen sind Themen auf die verwiesen wurde aber noch nicht in der Datenbank enthalten sind<br />
+◦ verwaiste Themen sind Themen die in der Datenbank enthalten sind, aber auf die nicht verwiesen wurde</p>
+<p>ein detailliertes Thema:</p>
+<p>▪ zeigt die Bezeichnung des Themas an<br />
+▪ dem Thema kann ein Titel und ein Text gegeben werden<br />
+▪ Kategorien können dem Thema zugewiesen werden</p>
+<p>Favoriten:</p>
+<p>▪ zeigt die Themen an die die Kategorie &quot;favorite&quot; enthalten</p>
+<p><strong>Beschreibung der Komponenten des Servers:</strong></p>
+<p>Application_cl:</p>
+<ul>
+<li>stellt die Verbindung zwischen Database_cl und View_cl her<br />
+</li>
+<li>stellt alle Methoden für das Method-Dispatching bereit</li>
+<li>die Methoden GET, PUT, POST und DELETE sind implementiert</li>
+</ul>
+<p>GET: - holt sich die Daten auf der Datenbank &quot;topics.json&quot;&quot;</p>
+<p>POST: - fügt ein neues Thema der Datenbank hinzu</p>
+<p>PUT: - ändert ein bestehendes Thema</p>
+<p>DELETE: - löscht ein einzelnes Thema</p>
+<p>Database_cl:</p>
+<ul>
+<li>liest, bearbeitet, erstellt Einträge in den zugehörigen .json Dateien</li>
+</ul>
+<p>View_cl:</p>
+<ul>
+<li>gibt die Daten der GET-Anfragen aus</li>
+</ul>
+<p><strong>Datenablage:</strong></p>
+<pre><code> web     
+    /p4          
+            /app     
+                /_init_.py &lt;-- Initialisierung     
+                /application.py &lt;-- Anwendung     
+                /database.py &lt;-- Datenbasis     
+                /view.py &lt;-- Sicht     
+            /static     
+                /es_to_c6.js
+                /main.css     
+                /main.thml
+                /main_c6.js
+                /te_c6.js
+                /tm_c6.css
+                /xhr_c6.js                  
+            /data     
+                /topics.json &lt;-- Daten     
+                /ID.json          
+            /doc     
+                /doku.md
+                /doku.html     
+            /template     
+                /detail_create.tpl.html     
+                /detail_edit.tpl.html     
+                /detail_show.tpl.html     
+                /detailTags.tpl.html     
+                /favorites.tpl.html     
+                /footer.tpl.html     
+                /header.tpl.html     
+                /home.tpl.html     
+                /missing.tpl.html     
+                /orphans.tpl.html     
+                /sidebar.tpl.html   
+                /tags.tpl.html     
+                /topics.tpl.html     </code></pre>
+<p><strong>Beschreibung der Komponenten des Servers:</strong></p>
+<ul>
+<li>Der Server stellt jediglich die Daten bereit die in der Datenbank gespeichert wurden</li>
+<li>Die Methoden POST, GET, PUT, DELETE greifen auf die Datenbank zu und bearbeiten oder geben diese aus</li>
+</ul>
+<p><strong>Beschreibung der Komponenten des Clients:</strong></p>
+<p>main_c6.js</p>
+<p>ist für die Verarbeitung auf dem Client zuständig. Der Event-Handler fängt die Anfragen vom Client ab und gibt die entsprechende angefragte Seite aus. Die einzelnen Komponenten der HTML-Seite werden hier geladen.</p>
+</body>
+</html>

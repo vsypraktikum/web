@@ -1,0 +1,8 @@
+{
+   "datum": "04.01.2017",
+   "komponente": "Django",
+   "kategorie": "2",
+   "fehlerstatus": "behoben",
+   "mitarbeiter": "Dinkat",
+   "beschreibung": "API-Schnittstelle unsicher/angreifbar durch Cross Site Scripting"
+}

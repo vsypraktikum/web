@@ -1,0 +1,21 @@
+<!-- Template -->
+<!-- Contentbereich -->
+<table>
+   <tr><th>Titel</th></tr>
+   @var entry_a;@
+   @var loop_i;@
+   @var loop_j;@
+   @var test;@
+   @var test1;@
+   @var index='tag';@
+   @for loop_i = 0; loop_i < context.length; loop_i++@
+      @test=context[loop_i]['tag'].length;@
+      @entry_a = context[loop_i];@
+      <tr id="#entry_a['id']#">
+      
+         
+         <td>#entry_a['title']#</td>
+      </tr>
+   @endfor@
+</table>
+<!-- EOF -->

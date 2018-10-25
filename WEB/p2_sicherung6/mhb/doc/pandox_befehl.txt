@@ -1,0 +1,1 @@
+pandoc -f markdown -t html5 -s <IhreDatei> -o <IhreHTML5Datei>

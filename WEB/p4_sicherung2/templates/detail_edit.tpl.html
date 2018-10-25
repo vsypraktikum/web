@@ -1,0 +1,17 @@
+<!-- Template -->
+<!-- Contentbereich -->
+<form id="topicsData">
+    <h2>@if context!=null@ #context['Bezeichnung']# @endif@</h2>
+	<div>
+		<input type="text" id="Titel" name="Titel" @if context!=null@ value="#context['Titel']#" @endif@/>
+	</div>
+	<div>
+		<textarea id="Text" cols="200" rows="10">@if context!=null@ "#context['Text']#" @endif@</textarea>
+	</div>
+	<div>
+		<textarea id="Kategorien" cols="200" rows="5">@if context!=null@ "#context['Kategorien']#" @endif@</textarea>
+	</div>
+    <button id="idBack">Zurück</button>
+	<button id="topicbearbeiten">Bearbeiten</button>
+</form>
+<!-- EOF -->

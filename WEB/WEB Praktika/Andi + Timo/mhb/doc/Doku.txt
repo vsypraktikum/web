@@ -1,0 +1,162 @@
+Name: Andreas Söhnlein, Timo Rütten
+Matrikelnummer: 1121898, 989713
+Gruppe: D 
+Datum: 13.12.2017 
+
+Allgemeine Beschreibung der Lösung:
+
+Aufgabe der Anwendung:
+
+Mit der Webanwendung werden die Beschreibungen der Studiengänge und Module abgerufen bzw. gepﬂegt.
+
+Übersicht der fachlichen Funktionen:
+
+Mit der Anwendung soll es möglich sein, neben der Datenpﬂege ein Modulhandbuch zu erstellen:
+
+• das Modulhandbuch zu einem Studiengang enthält
+◦ die Zusammenstellung der Angaben zum Studiengang
+◦ eine Übersicht mit allen Lehrveranstaltungen, alphabetisch sortiert
+▪ auch die Modulverantwortlichen werden aufgeführt
+
+einen detaillierten Semesterplan:
+
+▪ vom 1. bis zum letzten Semester des Studiengangs werden die Lehrveranstaltungen mit allen Daten ausgewiesen
+▪ die je Semester erzielbaren Kreditpunkte werden ausgewiesen
+▪ die insgesamt erzielbaren Kreditpunkte werden ausgewiesen
+• es werden drei Rollen vorgesehen:
+
+Rolle "Studierender":
+
+▪ kann alle Studiengänge einsehen
+▪ kann zu jedem Studiengang das Modulhandbuch abrufen
+
+Rolle "Verantwortlicher Modul":
+
+▪ kann die Daten der ihm zugewiesenen Module bearbeiten (aber keine Module erstellen oder löschen!)
+▪ kann alle Studiengänge einsehen
+▪ kann zu jedem Studiengang das Modulhandbuch abrufen
+
+Rolle "Verantwortlicher Studiengang":
+
+▪ erstellt und pﬂegt die Studiengänge
+▪ erstellt die Module (gibt dabei nur Bezeichnung an - Pﬂege der weiteren Inhalte siehe andere Rolle)
+▪ legt die Zuordnung der Benutzer der Rolle "Verantwortlicher Modul" zu Modulen fest
+▪ kann Module löschen
+▪ legt die Struktur eines Studiengangs anhand der Lehrveranstaltungen in den einzelnen Semestern fest
+▪ legt die Zuordnung der Module zu Lehrveranstaltungen fest
+▪ legt die Modulabhängigkeiten (Voraussetzungen) fest
+
+Beschreibung der Komponenten des Servers:
+
+Application_cl:
+
+stellt die Verbindung zwischen Database_cl und View_cl her
+stellt die Funktionen der Anwendung bereit (save, edit, delete, login, modulhandbuch, etc.)
+Database_cl:
+
+liest, bearbeitet, erstellt Einträge in den zugehörigen .json Dateien
+View_cl:
+
+liest die erstellten Templates ein und gibt die Sicht der zugehörigen Anwendung aus
+Datenablage:
+
+ web     
+    /p2     
+        /mhd     
+            /app     
+                /_init_.py <-- Initialisierung     
+                /application.py <-- Anwendung     
+                /database.py <-- Datenbasis     
+                /view.py <-- Sicht     
+            /content     
+                /mhb.css     
+                /mhb_vm.js
+				/mhb_student.js
+            /data     
+                /user.json <-- Daten     
+                /studiengang.json     
+                /modul.json     
+                /lehrveranstaltung.json 
+				/ID.json
+            /doc     
+            /template     
+                /formCreateLehrveranstaltung.tpl
+				/formCreateLehrveranstaltung.tpl.py
+				/formCreateModul.tpl
+				/formCreateModul.tpl.py
+				/formCreateStudiengang.tpl
+				/formCreateStudiengang.tpl.py
+				/formError.tpl
+				/formModulhandbuch.tpl
+				/formModulhandbuch.tpl.py
+				/formStudiengang.tpl
+				/formStudiengang.tpl.py
+				/formStudierender.tpl
+				/formStudierender.tpl.py
+				/formVerantwortlicherModul.tpl
+				/formVerantwortlicherStudiengang.tpl
+				/formVerantwortlicherStudiengang.tpl.py
+				/formVerantwortlicherStudiengangEdit.tpl
+				/layout.tpl
+				/layout.tpl.py
+				/loginLehrende.tpl
+				/loginLehrende.tpl.py
+				/loginStudierende.tpl
+				/loginStudierende.tpl.py
+				/mhb.css
+				/mhb_modul.js
+				/mhb_student.js
+				/mhb_studiengang.js    
+Konfiguration:
+
+coding: utf-8
+
+import os
+import cherrypy
+from app import application
+
+--------------------------------------
+
+def main():
+#--------------------------------------
+# Get current directory
+try:
+current_dir = os.path.dirname(os.path.abspath(file))
+except:
+current_dir = os.path.dirname(os.path.abspath(sys.executable))
+# disable autoreload and timeout_monitor
+cherrypy.engine.autoreload.unsubscribe()
+cherrypy.engine.timeout_monitor.unsubscribe()
+# Static content config
+staticConfig_o = {
+'/': {
+'tools.staticdir.root': current_dir,
+'tools.staticdir.on': True,
+'tools.staticdir.dir': './content',
+}
+}
+cherrypy.config.update({
+'tools.log_headers.on': True,
+'tools.sessions.on': False,
+'tools.encode.on': True,
+'tools.encode.encoding': 'utf-8',
+'server.socket_port': 8080,
+'server.socket_timeout': 60,
+'server.thread_pool': 10,
+'server.environment': 'production',
+'log.screen': True#,
+#'request.show_tracebacks': False
+})
+
+# Request-Handler definieren      
+cherrypy.tree.mount(application.Application_cl(), '/', staticConfig_o)     
+
+# Start server     
+cherrypy.engine.start()     
+cherrypy.engine.block()     
+--------------------------------------
+
+if name == 'main':
+#--------------------------------------
+main()
+# EOF

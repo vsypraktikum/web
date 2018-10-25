@@ -1,0 +1,86 @@
+* {
+   box-sizing: border-box;
+}
+
+body {
+   margin: 0;
+   padding: 0;
+}
+
+body {
+   font-family: "Open Sans", sans-serif;
+   font-size: 12pt;
+
+   padding: 0;
+   margin: 0;
+}
+
+/* Header Layout */
+.clSiteHeaderLeft {
+   position: absolute;
+   top: 0;
+   left: 0;
+   right: 0;
+   height: 75px;
+   line-height: 75px;
+   margin: 0;
+   padding: 5px;
+   font-size: 12pt;
+   color: white;
+   background-color: #00BBBB;
+}
+
+.clSiteHeaderRight {
+   position: absolute;
+   top: 0;
+   left: 0;
+   right: 0;
+   height: 75px;
+   line-height: 75px;
+   margin: 0;
+   padding: 5px;
+   font-size: 12pt;
+   color: white;
+   text-align: right;
+}
+
+/* Sidebar */
+.clSidebar {
+   position: absolute;
+   top: 85px;
+   left: 0;
+   bottom: 0;
+   width: 200px;
+   border-left: 1px solid;
+   margin: 0;
+   padding: 5px;
+   left: 80%;
+}
+
+.clContent {
+   position: absolute;
+   top: 85px;
+   left: 400px;
+   bottom: 0;
+   width: 800px;
+   margin: 0;
+   padding: 25px;
+}
+
+.clSelected {
+   background-color: blue;
+   color: white;
+}
+
+form label {
+   display: block;
+   width: 200px;
+}
+form input {
+   display: block;
+   width: 300px;
+}
+form button {
+   display: block;
+}
+/* EOF */

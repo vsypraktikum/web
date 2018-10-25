@@ -1,0 +1,76 @@
+/* einfaches Layout fuer Demonstrator */
+
+* {
+   box-sizing: border-box;
+}
+
+body {
+   margin: 0;
+   padding: 0;
+}
+
+header {
+   position: absolute;
+   top: 0;
+   left: 0;
+   right: 0;
+   height: 100px;
+   background-color: blue;
+   color: white;
+}
+aside {
+   position: absolute;
+   top: 100px;
+   left: 0;
+   right: 0;
+   height: 50px;
+   background-color: lightgrey;
+   color: blue;
+}
+aside li{
+    display: inline; /* li nebeneinander anzeigen */
+    list-style-type: none; /* ohne Aufzählungspunkte */
+	margin: 0.5em;
+}
+main {
+   position: absolute;
+   top: 150px;
+   left: 0;
+   right: 0;
+   bottom: 50px;
+}
+footer {
+   position: absolute;
+   bottom: 0;
+   left: 0;
+   right: 0;
+   height: 50px;
+   background-color: blue;
+   color: white;
+}
+footer p {
+   text-align: center;
+}
+
+.clSelected {
+   background-color: blue;
+   color: white;
+}
+
+form label {
+   display: block;
+   width: 200px;
+}
+form input {
+   display: block;
+   width: 1000px;
+}
+form button {
+   display: block;
+}
+
+textarea {
+	resize: none;
+    overflow: auto;
+}
+/* EOF */

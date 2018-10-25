@@ -1,0 +1,47 @@
+<!-- Template -->
+<!-- Contentbereich -->
+<form id="pensidata">
+    <div>
+        Anrede:
+        <input type="text" id="Anrede" name="Anrede" @if context!=null@ value="#context['Anrede']#" @endif@ />
+    </div>
+    <div>
+        Name:
+        <input type="text" id="Name" name="Name" @if context!=null@ value="#context['Name']#" @endif@ />
+    </div>
+    <div>
+        Vorname:
+        <input type="text" id="Vorname" name="Vorname" @if context!=null@ value="#context['Vorname']#" @endif@ />
+    </div>
+    <div>
+        Titel:
+        <input type="text" id="Titel" name="Titel" @if context!=null@ value="#context['Titel']#" @endif@ />
+    </div>
+    <div>
+        Geburtsdatum:
+        <input type="text" id="Geburtsdatum" name="Geburtsdatum" @if context!=null@ value="#context['Geburtsdatum']#" @endif@ />
+    </div>
+    <div>
+        Straße:
+        <input type="text" id="Strasse" name="Strasse" @if context!=null@ value="#context['Strasse']#" @endif@ />
+    </div>
+    <div>
+        Hausnummer:
+        <input type="text" id="Hausnummer" name="Hausnummer" @if context!=null@ value="#context['Hausnummer']#" @endif@ />
+    </div>
+    <div>
+        Adresszusatz:
+        <input type="text" id="Adresszusatz" name="Adresszusatz" @if context!=null@ value="#context['Adresszusatz']#" @endif@ />
+    </div>
+    <div>
+        Postleitzahl:
+        <input type="text" id="Postleitzahl" name="Postleitzahl" @if context!=null@ value="#context['Postleitzahl']#" @endif@ />
+    </div>
+    <div>
+        Ort:
+        <input type="text" id="Ort" name="Ort" @if context!=null@ value="#context['Ort']#" @endif@ />
+    </div>
+
+    <button id="idBack">Zurück</button><button id="pensionaerspeichern">Speichern</button>
+</form>
+<!-- EOF -->

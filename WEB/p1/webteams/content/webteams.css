@@ -1,0 +1,15 @@
+p { /* alle p-Elemente, d.h. alle Absätze */
+    color: red; /* Textfarbe */
+}
+table { /* alle table-Elemente, d.h. alle Tabellen */
+    border: 3px solid; /* Rahmen um die Tabelle, nicht die Zellen! */
+    border-collapse: collapse; /* kein Leerraum zwischen einzelnen Zellen */
+}
+th, td { /* alle th- und td-Element, d.h. alle Header - und alle einfachen Zellen */
+    border: 1px solid; /* Rahmen um die Zellen! */
+}
+label {
+    width: 10em;
+    display: block;
+    float: left;
+}

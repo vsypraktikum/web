@@ -1,0 +1,5 @@
+{
+   "projekt": "Webpraktikum",
+   "beschreibung": "Test REST-Interface mit cURL",
+   "name": "cURL"
+}

@@ -1,0 +1,15 @@
+<!-- Template -->
+<!-- Contentbereich -->
+<h2>Alle Themen</h2>
+<ul>
+   @var entry_a;@
+   @var loop_i;@
+   @for loop_i = 0; loop_i < context.length; loop_i++@
+      @entry_a = context[loop_i];@
+		<li>
+			<a href="##" id="#entry_a['id']#">#entry_a['Bezeichnung']#</a>
+		</li>
+   @endfor@
+</ul>   
+<button id="idNewListEntry">Neuer Eintrag</button>
+<!-- EOF -->

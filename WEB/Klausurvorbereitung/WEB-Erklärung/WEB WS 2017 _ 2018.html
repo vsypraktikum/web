@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<!-- saved from url=(0047)http://pc03230.kr.hsnr.de/res/add/dispatch.html -->
+<html class="gr__pc03230_kr_hsnr_de"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>WEB WS 2017 / 2018</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./WEB WS 2017 _ 2018_files/fonts.css">
+    <link rel="stylesheet" href="./WEB WS 2017 _ 2018_files/theme.css">
+    <link rel="stylesheet" href="./WEB WS 2017 _ 2018_files/pygments.css">
+    
+    
+  </head>
+
+  <body class="node-dispatch node" data-gr-c-s-loaded="true">
+
+    <header class="masthead">
+      <h1><a href="http://pc03230.kr.hsnr.de/res/add/index.html">Web-Engineering (WEB)</a></h1>
+      
+        <p class="tagline">Wintersemester 2017 / 2018</p>
+      
+      <nav class="menu">
+        <input id="menu-check" type="checkbox">
+        <label id="menu-label" for="menu-check" class="unselectable">
+          <span class="icon close-icon">✕</span>
+          <span class="icon open-icon">☰</span>
+          <span class="text">Menu</span>
+        </label>
+        <ul>
+<li><a href="http://pc03230.kr.hsnr.de/res/add/dispatch.html">Dispatching/Routing</a></li>
+<li><a href="http://pc03230.kr.hsnr.de/res/add/layout.html">Layout-Modelle</a></li>
+</ul>
+      </nav>
+    </header>
+
+    <article class="main">
+      <header class="title">
+        <h1>Dispatching / Routing</h1>
+        
+        <hr>
+      </header>
+      <ul class="stx-toc">
+<li>
+<a href="http://pc03230.kr.hsnr.de/res/add/dispatch.html#-einleitung">1. Einleitung</a>
+</li>
+<li>
+<a href="http://pc03230.kr.hsnr.de/res/add/dispatch.html#-webserver-framework-cherrypy">2. Webserver-Framework cherrypy</a>
+<ul>
+<li>
+<a href="http://pc03230.kr.hsnr.de/res/add/dispatch.html#-1-object-dispatching">2.1 Object-Dispatching</a>
+<ul>
+<li>
+<a href="http://pc03230.kr.hsnr.de/res/add/dispatch.html#-1-1-objekt-hierarchie-aufbauen">2.1.1 Objekt-Hierarchie aufbauen</a>
+<ul>
+<li>
+<a href="http://pc03230.kr.hsnr.de/res/add/dispatch.html#-1-1-1-request-handler-definieren">2.1.1.1 Request-Handler definieren</a>
+</li>
+<li>
+<a href="http://pc03230.kr.hsnr.de/res/add/dispatch.html#-1-1-2-weitere-objekte-bereitstellen">2.1.1.2 Weitere Objekte bereitstellen</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="http://pc03230.kr.hsnr.de/res/add/dispatch.html#-1-2-kennzeichnung-der-per-request-aufrufbaren-methoden">2.1.2 Kennzeichnung der per Request aufrufbaren Methoden</a>
+</li>
+<li>
+<a href="http://pc03230.kr.hsnr.de/res/add/dispatch.html#-1-3-die-bedeutung-von-parametern">2.1.3 Die Bedeutung von Parametern</a>
+</li>
+<li>
+<a href="http://pc03230.kr.hsnr.de/res/add/dispatch.html#-1-4-sonderfall-index-methode">2.1.4 Sonderfall: index-Methode</a>
+</li>
+<li>
+<a href="http://pc03230.kr.hsnr.de/res/add/dispatch.html#-1-5-sonderfall-default-methode">2.1.5 Sonderfall: default-Methode</a>
+</li>
+<li>
+<a href="http://pc03230.kr.hsnr.de/res/add/dispatch.html#-1-6-vor-und-nachteile">2.1.6 Vor- und Nachteile</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="http://pc03230.kr.hsnr.de/res/add/dispatch.html#-2-method-dispatching">2.2 Method-Dispatching</a>
+<ul>
+<li>
+<a href="http://pc03230.kr.hsnr.de/res/add/dispatch.html#-2-1-request-handler-definieren">2.2.1 Request-Handler definieren</a>
+</li>
+<li>
+<a href="http://pc03230.kr.hsnr.de/res/add/dispatch.html#-2-2-methoden-und-veroffentlichungskennzeichnung-der-klassen">2.2.2 Methoden und Veröffentlichungskennzeichnung der Klassen</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="-einleitung">
+1. Einleitung
+</h1>
+<p>
+Im Zusammenspiel von Webclient und Webserver ist es die Aufgabe des Webservers, eingehende
+Anfragen (Requests) zu interpretieren, um
+</p>
+<ul>
+<li>
+entweder statische Ressourcen wie HTML- oder CSS-Dateien auszuliefern
+</li>
+<li>
+oder Verarbeitungsleistungen durchzuführen, deren Ergebnis (z.B. dynamisch erzeugtes Markup) an den Webclient ausgeliefert wird.
+</li>
+</ul>
+<p>
+Die Begriffe <em>Dispatching</em> und <em>Routing</em> beschreiben diesen Vorgang aus unterschiedlichen Blickwinkeln:
+</p>
+<ul>
+<li>
+<em>Dispatching</em>: man betrachtet die <em>Verteilung</em> der Anfragen auf unterschiedliche bearbeitende Komponenten im Webserver
+</li>
+<li>
+<em>Routing</em>: man betrachtet den Weg zu einer Ressource und leitet die Anfrage entsprechend weiter.
+</li>
+</ul>
+<p>
+Im Prinzip beschreiben beide Begriffe denselben Vorgang: wie ordnet man einer Anfrage eine Verarbeitungsleistung zu?
+</p>
+<p>
+Der Standardfall aller Webserver ist die Verarbeitungsleistung "Auslieferung einer statischen Ressource":
+</p>
+<ul>
+<li>
+der Pfad-Anteil im URI wird direkt abgebildet auf einen Teilbaum in Dateisystem, i.d.R. ist die Ressource eine Datei
+</li>
+<li>
+der Ausgangspunkt des Teilbaums wird durch Konfiguration bestimmt.
+</li>
+</ul>
+<div class="alertbox info">
+<p>
+Zur Erinnerung: ein Uniform Resource Identifier (URI) besteht für das Schema HTTP (vereinfacht) aus folgenden Bestandteilen:
+</p>
+<ul>
+<li>
+Schema (hier: http)
+</li>
+<li>
+Trennzeichen ":" und danach "//"
+</li>
+<li>
+Angaben zu Benutzer und Kennwort (optional, wird in der Regel nicht genutzt)
+</li>
+<li>
+Angabe des Host (Domain oder IP-Adresse)
+</li>
+<li>
+Angabe des Port (optionale), mit ":" von der Host-Angabe getrennt
+</li>
+<li>
+Angabe des Pfads, beginnend mit "/"
+</li>
+<li>
+Angabe des Query-String, beginnend mit "?" (optional)
+</li>
+<li>
+Angabe des Fragments, beginnend mit "#" (optional).
+</li>
+</ul>
+</div>
+<h1 id="-webserver-framework-cherrypy">
+2. Webserver-Framework cherrypy
+</h1>
+<p>
+Das Webserver-Framework <code>cherrypy</code> verwendet neben dem oben beschriebenen Standardverhalten, das durch Angaben in der Server-Konfiguration erzielt wird, zwei weitere Vorgehensweise, um Anfragen auf Verarbeitungsleistungen abzubilden:
+</p>
+<ul>
+<li>
+<em>Object-Dispatching</em>: der Pfad wird als Objektstruktur interpretiert
+</li>
+<li>
+<em>Method-Dispatching</em>: die HTTP-Methode und der Pfad bestimmen, auf welche Methode eine Anfrage abgebildet werden.
+</li>
+</ul>
+<h2 id="-1-object-dispatching">
+2.1 Object-Dispatching
+</h2>
+<p>
+Object-Dispatching ist die beim cherrypy-Framework standardmäßig vorgesehene Vorgehensweise.
+</p>
+<p>
+Die Pfade der Anforderungen werden als Aufruf einer Methode in einer Objekthierarchie interpretiert. Z.B. kann die Anfrage
+<code>http://pc03230.kr.hsnr.de/web/zusatz/aktuell</code> mit dem Pfad <code>/web/zusatz/aktuell</code> so interpretiert werden:
+</p>
+<pre>/                       -&gt; root.
+ web/                   -&gt;      web.
+     zusatz/            -&gt;          zusatz.
+            aktuell     -&gt;                 aktuell()
+</pre>
+<p>
+D.h. es erfolgt der Aufruf <code>root.web.zusatz.aktuell()</code>.
+</p>
+<h3 id="-1-1-objekt-hierarchie-aufbauen">
+2.1.1 Objekt-Hierarchie aufbauen
+</h3>
+<h4 id="-1-1-1-request-handler-definieren">
+2.1.1.1 Request-Handler definieren
+</h4>
+<p>
+Ausgangspunkt der Objekt-Hierarchie ist das <strong>root</strong>-Objekt, das als Instanz einer Klasse angegeben und mit dem Basis-Pfad
+verknüpft wird, z.B. so:
+</p>
+<pre class="lang-python pygments" data-lang="python"><span class="n">cherrypy</span><span class="o">.</span><span class="n">tree</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="n">application</span><span class="o">.</span><span class="n">Application_cl</span><span class="p">(),</span> <span class="s1">'/'</span><span class="p">,</span> <span class="n">staticConfig_o</span><span class="p">)</span>
+</pre>
+<p>
+Im Beispiel ist der Basispfad <code>/</code> mit der Instanz <code>application.Application_cl()</code> verknüpft. Anstelle von <code>/</code> kann auch ein umfangreicherer Basispfad angegeben werden, wenn man z.B. verschiedene Basispfade verwenden will, um einzelne 'Anwendungen' voneinander
+zu unterscheiden:
+</p>
+<pre class="lang-python pygments" data-lang="python"><span class="n">cherrypy</span><span class="o">.</span><span class="n">tree</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="n">applicationA</span><span class="o">.</span><span class="n">ApplicationA_cl</span><span class="p">(),</span> <span class="s1">'/application1/x'</span><span class="p">,</span> <span class="n">staticConfig_o</span><span class="p">)</span>
+<span class="n">cherrypy</span><span class="o">.</span><span class="n">tree</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="n">applicationB</span><span class="o">.</span><span class="n">ApplicationB_cl</span><span class="p">(),</span> <span class="s1">'/application2/y'</span><span class="p">,</span> <span class="n">staticConfig_o</span><span class="p">)</span>
+</pre>
+<h4 id="-1-1-2-weitere-objekte-bereitstellen">
+2.1.1.2 Weitere Objekte bereitstellen
+</h4>
+<p>
+Die weiteren Objekte der Objekthierarchie werden i.d.R. in den <code>__init__</code>-Methoden der einzelnen Klassen erzeugt (für das weiter oben
+angegebene Zuordnungsbeispiel (<code>/web/zusatz/aktuell</code>):
+</p>
+<ul>
+<li>
+<p>
+in der Klasse <code>Application_cl</code> wird dann eingetragen:
+</p>
+</li>
+</ul>
+<pre class="lang-python pygments" data-lang="python"><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+   <span class="bp">self</span><span class="o">.</span><span class="n">web</span> <span class="o">=</span> <span class="n">Web_cl</span><span class="p">()</span>
+</pre>
+<ul>
+<li>
+<p>
+in der Klasse <code>Web_cl</code> wird dann eingetragen:
+</p>
+</li>
+</ul>
+<pre class="lang-python pygments" data-lang="python"><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+   <span class="bp">self</span><span class="o">.</span><span class="n">zusatz</span> <span class="o">=</span> <span class="n">Zusatz_cl</span><span class="p">()</span>
+</pre>
+<ul>
+<li>
+<p>
+in der Klasse <code>Zusatz_cl</code> gibt es dann die Methode <code>aktuell</code>:
+</p>
+</li>
+</ul>
+<pre class="lang-python pygments" data-lang="python"><span class="nd">@cherrypy.expose</span>
+<span class="k">def</span> <span class="nf">aktuell</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+   <span class="k">pass</span>
+</pre>
+<p>
+Wichtig ist, dass die Attributnamen der Klassen (hier: <code>web</code>, <code>zusatz</code> sowie <code>aktuell</code>) mit den Pfadbestandteilen übereinstimmen!
+</p>
+<h3 id="-1-2-kennzeichnung-der-per-request-aufrufbaren-methoden">
+2.1.2 Kennzeichnung der per Request aufrufbaren Methoden
+</h3>
+<p>
+Methoden einer Klasse können nur dann per Object-Dispatching aufgerufen werden, wenn sie speziell gekennzeichnet werden. Dazu kann
+man entweder die <em>Decorator</em>-Schreibweise verwenden:
+</p>
+<pre class="lang-python pygments" data-lang="python"><span class="nd">@cherrypy.expose</span>
+<span class="k">def</span> <span class="nf">Methode</span> <span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+   <span class="k">pass</span>
+</pre>
+<p>
+oder die Attributschreibweise:
+</p>
+<pre class="lang-python pygments" data-lang="python"><span class="k">def</span> <span class="nf">Methode</span> <span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+   <span class="k">pass</span>
+<span class="n">Methode</span><span class="o">.</span><span class="n">exposed</span> <span class="o">=</span> <span class="bp">True</span>
+</pre>
+<h3 id="-1-3-die-bedeutung-von-parametern">
+2.1.3 Die Bedeutung von Parametern
+</h3>
+<p>
+Beim Object-Dispatching werden auch Parameterlisten in die Auswertung der Zuordnung einbezogen. Pfadbestandteile können als
+positionale Aktual-Parameter interpretiert werden, Inhalte des Query-Strings werden als Aktual-Parameter in der Form 'call-by-name' übergeben. Key/Value-Paare, die im Request-Body z.B. bei POST-Anfragen für Formulare auftreten, werden vom cherrypy-Framework ebenfalls als Aktual-Parameter in der Form 'call-by-name' übergeben.
+</p>
+<p>
+Beispiele (es wird jeweils nur die abschließende Methode im Pfad angegeben):
+</p>
+<pre class="lang-python pygments" data-lang="python"><span class="n">Pfad</span><span class="o">-</span><span class="n">Abschluss</span><span class="p">:</span> <span class="o">..../</span><span class="n">methode</span><span class="o">/</span><span class="n">A</span><span class="o">/</span><span class="n">B</span><span class="o">/</span><span class="mi">3</span>
+
+<span class="nd">@cherrypy.expose</span>
+<span class="k">def</span> <span class="nf">methode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">,</span> <span class="n">p3</span><span class="p">):</span> <span class="c1"># erhalten die Werte 'A', 'B' und 3</span>
+   <span class="k">pass</span>
+
+<span class="c1"># oder</span>
+
+<span class="nd">@cherrypy.expose</span>
+<span class="k">def</span> <span class="nf">methode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span> <span class="c1"># erhalten die Werte 'A', 'B' und 3</span>
+   <span class="k">pass</span>
+</pre>
+<pre class="lang-python pygments" data-lang="python"><span class="n">Pfad</span><span class="o">-</span><span class="n">Abschluss</span><span class="p">:</span> <span class="o">..../</span><span class="n">methode</span><span class="o">/</span><span class="err">?</span><span class="n">p1</span><span class="o">=</span><span class="n">A</span><span class="o">&amp;</span><span class="n">p2</span><span class="o">=</span><span class="n">B</span><span class="o">&amp;</span><span class="n">p3</span><span class="o">=</span><span class="mi">3</span>
+
+<span class="nd">@cherrypy.expose</span>
+<span class="k">def</span> <span class="nf">methode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">,</span> <span class="n">p3</span><span class="p">):</span> <span class="c1"># erhalten die Werte 'A', 'B' und 3</span>
+   <span class="k">pass</span>
+
+<span class="c1"># oder</span>
+
+<span class="nd">@cherrypy.expose</span>
+<span class="k">def</span> <span class="nf">methode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span> <span class="c1"># kwargs ist dann das Dictionary {'p1': 'A', 'p2': 'B', 'p3':3}</span>
+   <span class="k">pass</span>
+</pre>
+<p>
+Passen die Längen der Parameterlisten oder die Namen der Parameter nicht, erzeugt cherrypy keinen Methodenaufruf und gibt an den Client
+den Statuscode 404 ('notfound') zurück. Hat man variabel lange Parameterlisten, kann man sich auch mit default-Werten für die
+Formalparameter behelfen.
+</p>
+<p>
+Wie bei Python üblich/möglich, können positionale Parameter per <code>*args</code> und Keyword-Parameter (<code>call-by-name</code>) per <code>**kwargs</code> übergeben werden. <strong>Achtung</strong>: es bleibt dann den Methoden überlassen zu prüfen, ob sich in den Parameterlisten die erwarteten Daten / Namen befinden.
+</p>
+<h3 id="-1-4-sonderfall-index-methode">
+2.1.4 Sonderfall: index-Methode
+</h3>
+<p>
+Im Fall der Auslieferung statischer Ressourcen hat sich die Konvention herausgebildet, eine 'Index'-Datei auszuliefern bzw. auszuführen,
+wenn der Pfad auf ein Verzeichnis und nicht auf eine Datei abgebildet werden kann.
+</p>
+<p>
+Im Web-Framework cherrypy wird eine daran angelehnte Vorgehensweise verwendet: wird z.B. nur <code>http://pc03230.kr.hsnr.de/web/zusatz/</code> angegeben, dann erwartet das Framework in der Klasse <code>Zusatz_cl</code> die veröffentlichte (<code>cherrypy.expose</code>) Methode <code>index</code>:
+</p>
+<ul>
+<li>
+<p>
+in der Klasse <code>Zusatz_cl</code> gibt es dann die Methode <code>aktuell</code>:
+</p>
+</li>
+</ul>
+<pre class="lang-python pygments" data-lang="python"><span class="k">class</span> <span class="nc">Zusatz_cl</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+  <span class="nd">@cherrypy.expose</span>
+  <span class="k">def</span> <span class="nf">index</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+     <span class="k">pass</span>
+
+  <span class="nd">@cherrypy.expose</span>
+  <span class="k">def</span> <span class="nf">aktuell</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+     <span class="k">pass</span>
+</pre>
+<p>
+Diese Konvention hat zur Folge, dass man Pfade unterschiedlich auf Objekthierarchien abbilden kann. Der Abschluss mit <code>aktuell</code> kann auch als einfacher Pfadbestandteil und damit als Attribut der Klasse <code>Zusatz_cl</code> angesehen werden, die eine Instanz z.B. der Klasse <code>Aktuell_cl</code> darstellt. Die Anforderung <code>http://pc03230.kr.hsnr.de/web/zusatz/aktuell</code> könnte dann als Aufruf
+<code>root.web.zusatz.aktuell.index()</code> interpretiert werden.
+</p>
+<h3 id="-1-5-sonderfall-default-methode">
+2.1.5 Sonderfall: default-Methode
+</h3>
+<p>
+Kann beim Objec-dispatching keine passende Methode einem Anfragepfad zugeordnet werden, liefert das Framework den Statuscode 404 (notfound) zurück. Um auf diese Situation reagieren zu können, kann man eine spezielle Methode mit dem Namen <code>default</code> vorsehen, die per Argument-Liste (<code>*args</code>) und Keyword-Dictionary (<code>**kwargs</code>) in allen nicht passenden Fällen aufgerufen wird.
+</p>
+<h3 id="-1-6-vor-und-nachteile">
+2.1.6 Vor- und Nachteile
+</h3>
+<p>
+Das Object-Dispatching ermöglicht die Strukturierung der Verarbeitungsleistung mittels einer Object-Hierarchie. Man kann also am
+Programmaufbau direkt ablesen, welche Anfragen bearbeitet werden können resp. aus den vorgesehene Anfragen ergibt sich unmittelbar der
+Aufbau der Klassen und damit der Objekt-Hierarchie.
+</p>
+<p>
+Als Nachteil anzusehen ist die fehlende Möglichkeit, bei der Interpretation des Anfrage-Pfads optionale Bestandteile innerhalb des Pfades
+vorzusehen.
+</p>
+<h2 id="-2-method-dispatching">
+2.2 Method-Dispatching
+</h2>
+<p>
+Die grundsätzliche andere Vorgehensweise des Method-Dispatching wird vor allem bei der Implementierung von REST-Anfragen verwendet.
+</p>
+<p>
+Die Zuordnung erfolgt dann mit Hilfe der HTTP-Methoden der Anfrage sowie die Parameter. Die Pfade der REST-Anfragen werden direkt bei
+der Vereinbarung der Request-Handler angegeben.
+</p>
+<h3 id="-2-1-request-handler-definieren">
+2.2.1 Request-Handler definieren
+</h3>
+<p>
+Um z.B. REST-Anfragen zur Ressource <code>notebook</code> zu bearbeiten, kann die Verarbeitung folgendermaßen definiert werden:
+</p>
+<pre class="lang-python pygments" data-lang="python"><span class="n">cherrypy</span><span class="o">.</span><span class="n">tree</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="n">application</span><span class="o">.</span><span class="n">Notebook_cl</span><span class="p">(),</span> <span class="s1">'/notebook'</span><span class="p">,</span> <span class="p">{</span>
+   <span class="s1">'/'</span><span class="p">:</span> <span class="p">{</span>
+     <span class="s1">'request.dispatch'</span><span class="p">:</span> <span class="n">cherrypy</span><span class="o">.</span><span class="n">dispatch</span><span class="o">.</span><span class="n">MethodDispatcher</span><span class="p">()</span>
+   <span class="p">}</span>
+<span class="p">})</span>
+</pre>
+<h3 id="-2-2-methoden-und-veroffentlichungskennzeichnung-der-klassen">
+2.2.2 Methoden und Veröffentlichungskennzeichnung der Klassen
+</h3>
+<p>
+Das Method-Dispatching erwartet in der Klasse Methoden, die wie die HTTP-Methoden benannt sind. Sollen im Beispiel <code>GET</code>, <code>POST</code>. <code>PUT</code> und <code>DELETE</code> Anfragen verarbeitet werden, müssen entsprechende Methoden vorgesehen werden.
+</p>
+<p>
+Die Kennzeichnung <code>exposed</code> erfolgt beim Method-Dispatching nicht mehr je Methode, sondern nur noch für die Klasse als Ganzes.
+</p>
+<p>
+Damit ergibt sich dann im Beispiel:
+</p>
+<pre class="lang-python pygments" data-lang="python"><span class="k">class</span> <span class="nc">Notebook_cl</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+   <span class="n">exposed</span> <span class="o">=</span> <span class="bp">True</span> <span class="c1"># für die Klasse als Ganzes</span>
+
+   <span class="k">def</span> <span class="nf">GET</span> <span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="c1"># ggf. mit Parametern</span>
+      <span class="k">pass</span>
+
+   <span class="k">def</span> <span class="nf">POST</span> <span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="c1"># ggf. mit Parametern</span>
+      <span class="k">pass</span>
+
+   <span class="k">def</span> <span class="nf">PUT</span> <span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="c1"># ggf. mit Parametern</span>
+      <span class="k">pass</span>
+
+   <span class="k">def</span> <span class="nf">DELETE</span> <span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="c1"># ggf. mit Parametern</span>
+      <span class="k">pass</span>
+</pre>
+
+    </article>
+
+    
+
+  
+
+</body></html>

@@ -1,0 +1,19 @@
+body {
+  margin: 10px;
+}
+
+th, td {
+	border: 1px solid #ddd;
+    padding: 1px;
+	background-color: #E32;
+}
+
+.topnav {
+    overflow: hidden;
+    background-color: #FFA;
+}
+
+.content {
+    background-color: #ddd;
+    padding: 10px;
+}

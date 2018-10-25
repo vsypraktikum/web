@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Hintergrundbilder</title>
+   <meta charset="UTF-8" />
+   <style type="text/css">
+      /* Stilregeln */
+      .button_first {
+         background-image: url(page-first.gif);
+         background-repeat: no-repeat;
+         background-position:left;
+         background-color: ButtonFace;
+         padding-left:20px;
+      }
+      /* zusammengefasste Form */
+      .button_last {
+         background: ButtonFace right url(page-last.gif) no-repeat;
+         padding-right:20px;
+      }
+      .Wiederholung {
+         background: url(ok.png) repeat;
+         width:100px;
+         height:100px;
+         margin-top:20px;
+      }
+   </style>
+</head>
+<body>
+   <div>
+      <button class="button_first">Anfang</button>
+      <button class="button_last">Ende</button>
+   </div>
+   <div class="Wiederholung">
+   </div>
+</body>
+</html>

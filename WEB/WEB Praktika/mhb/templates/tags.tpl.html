@@ -1,0 +1,21 @@
+<!-- Template -->
+<!-- Contentbereich -->
+<table>
+   <th>Tag</th><th> Anzahl</th>
+   @var entry_a;@
+   @var loop_i;@
+   @var loop_j;@
+   @var test;@
+   @var test1;@
+   @var temp2;@
+   @var index='tag';@
+   @for var temp in context@
+      @entry_a = context[temp];@
+       
+      
+      <tr id=#temp#>
+         <td>#entry_a['tag']#</td><td>#entry_a['count']#</td>
+      </tr>
+   @endfor@
+</table>
+<!-- EOF -->

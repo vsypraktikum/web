@@ -1,0 +1,63 @@
+/**
+ * -------------------------------------------------------------------------
+ *  Google fonts served locally.
+ * -------------------------------------------------------------------------
+ */
+
+@font-face {
+   font-family:'Roboto';
+   font-style:normal;
+   font-weight:400;
+   src: url(fonts/Roboto-Regular.ttf);
+}
+@font-face {
+   font-family:'Roboto';
+   font-style:normal;
+   font-weight:200;
+   src: url(fonts/Roboto-Light.ttf);
+}
+@font-face {
+   font-family:'Roboto';
+   font-style:normal;
+   font-weight:700;
+   src: url(fonts/Roboto-Bold.ttf);
+}
+
+@font-face {
+   font-family:'FabrikatMono';
+   font-style:normal;
+   font-weight:400;
+   src: url("fonts/HVD Fonts - Fabrikat Mono Regular.otf");
+}
+@font-face {
+   font-family:'FabrikatMono';
+   font-style:italic;
+   font-weight:400;
+   src: url("fonts/HVD Fonts - Fabrikat Mono Italic.otf");
+}
+@font-face {
+   font-family:'FabrikatMono';
+   font-style:normal;
+   font-weight:700;
+   src: url("fonts/HVD Fonts - Fabrikat Mono Bold.otf");
+}
+
+@font-face {
+   font-family:'Barlow';
+   font-style:normal;
+   font-weight:200;
+   src: url("fonts/BarlowSemiCondensed-Light.ttf");
+}
+@font-face {
+   font-family:'Barlow';
+   font-style:normal;
+   font-weight:400;
+   src: url("fonts/BarlowSemiCondensed-Regular.ttf");
+}
+
+@font-face {
+   font-family:'Barlow';
+   font-style:italic;
+   font-weight:200;
+   src: url("fonts/BarlowSemiCondensed-LightItalic.ttf");
+}

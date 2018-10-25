@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<p>Name: Mark Hilsendegen <br />
+Matrikelnummer: 1121869 <br />
+Gruppe: B <br />
+Datum: 07.12.2017 </p>
+<p><strong>Allgemeine Beschreibung der Lösung:</strong></p>
+<p>Aufgabe der Anwendung:</p>
+<p>Mit der Webanwendung werden die Beschreibungen der Studiengänge und Module abgerufen bzw. gepﬂegt.</p>
+<p>Übersicht der fachlichen Funktionen:</p>
+<p>Mit der Anwendung soll es möglich sein, neben der Datenpﬂege ein Modulhandbuch zu erstellen:</p>
+<p>• das Modulhandbuch zu einem Studiengang enthält<br />
+◦ die Zusammenstellung der Angaben zum Studiengang<br />
+◦ eine Übersicht mit allen Lehrveranstaltungen, alphabetisch sortiert<br />
+▪ auch die Modulverantwortlichen werden aufgeführt</p>
+<p>einen detaillierten Semesterplan:</p>
+<p>▪ vom 1. bis zum letzten Semester des Studiengangs werden die Lehrveranstaltungen mit allen Daten ausgewiesen<br />
+▪ die je Semester erzielbaren Kreditpunkte werden ausgewiesen<br />
+▪ die insgesamt erzielbaren Kreditpunkte werden ausgewiesen<br />
+• es werden drei Rollen vorgesehen:</p>
+<p>Rolle &quot;Studierender&quot;:</p>
+<p>▪ kann alle Studiengänge einsehen<br />
+▪ kann zu jedem Studiengang das Modulhandbuch abrufen</p>
+<p>Rolle &quot;Verantwortlicher Modul&quot;:</p>
+<p>▪ kann die Daten der ihm zugewiesenen Module bearbeiten (aber keine Module erstellen oder löschen!)<br />
+▪ kann alle Studiengänge einsehen<br />
+▪ kann zu jedem Studiengang das Modulhandbuch abrufen</p>
+<p>Rolle &quot;Verantwortlicher Studiengang&quot;:</p>
+<p>▪ erstellt und pﬂegt die Studiengänge<br />
+▪ erstellt die Module (gibt dabei nur Bezeichnung an - Pﬂege der weiteren Inhalte siehe andere Rolle)<br />
+▪ legt die Zuordnung der Benutzer der Rolle &quot;Verantwortlicher Modul&quot; zu Modulen fest<br />
+▪ kann Module löschen<br />
+▪ legt die Struktur eines Studiengangs anhand der Lehrveranstaltungen in den einzelnen Semestern fest<br />
+▪ legt die Zuordnung der Module zu Lehrveranstaltungen fest<br />
+▪ legt die Modulabhängigkeiten (Voraussetzungen) fest</p>
+<p><strong>Beschreibung der Komponenten des Servers:</strong></p>
+<p>Application_cl:</p>
+<ul>
+<li>stellt die Verbindung zwischen Database_cl und View_cl her<br />
+</li>
+<li>stellt die Funktionen der Anwendung bereit (save, edit, delete, login, modulhandbuch, etc.)</li>
+</ul>
+<p>Database_cl:</p>
+<ul>
+<li>liest, bearbeitet, erstellt Einträge in den zugehörigen .json Dateien</li>
+</ul>
+<p>View_cl:</p>
+<ul>
+<li>liest die erstellten Templates ein und gibt die Sicht der zugehörigen Anwendung aus</li>
+</ul>
+<p><strong>Datenablage:</strong></p>
+<pre><code> web     
+    /p2     
+        /mhd     
+            /app     
+                /_init_.py &lt;-- Initialisierung     
+                /application.py &lt;-- Anwendung     
+                /database.py &lt;-- Datenbasis     
+                /view.py &lt;-- Sicht     
+            /content     
+                /mhb.css     
+                /mhb.js     
+            /data     
+                /benutzer.json &lt;-- Daten     
+                /studiengaenge.json     
+                /module.json     
+                /lehrveranstaltungen.json     
+            /doc     
+            /template     
+                /form_anmeldung_benutzername.tpl &lt;-- Formulare     
+                /form_module_1.tpl     
+                /form_module_2.tpl     
+                /form_module_3.tpl     
+                /form_studiengaenge_1.tpl     
+                /form_studiengaenge_2.tpl     
+                /form_studiengaenge_3.tpl     
+                /form_lehrveranstaltungen_1.tpl     
+                /form_lehrveranstaltungen_2.tpl     
+                /form_lehrveranstaltungen_3.tpl     
+                /liste_studiengaenge_vs.tpl &lt;--- Listen
+                /liste_studiengaenge_vm.tpl     
+                /liste_lehrveranstaltungen.tpl     </code></pre>
+<p><strong>Konfiguration:</strong></p>
+<h1 id="coding-utf-8">coding: utf-8</h1>
+<p>import os<br />
+import cherrypy<br />
+from app import application</p>
+<h1 id="section">--------------------------------------</h1>
+<p>def main():<br />
+#--------------------------------------<br />
+# Get current directory<br />
+try:<br />
+current_dir = os.path.dirname(os.path.abspath(<strong>file</strong>))<br />
+except:<br />
+current_dir = os.path.dirname(os.path.abspath(sys.executable))<br />
+# disable autoreload and timeout_monitor<br />
+cherrypy.engine.autoreload.unsubscribe()<br />
+cherrypy.engine.timeout_monitor.unsubscribe()<br />
+# Static content config<br />
+staticConfig_o = {<br />
+'/': {<br />
+'tools.staticdir.root': current_dir,<br />
+'tools.staticdir.on': True,<br />
+'tools.staticdir.dir': './content',<br />
+}<br />
+}<br />
+cherrypy.config.update({<br />
+'tools.log_headers.on': True,<br />
+'tools.sessions.on': False,<br />
+'tools.encode.on': True,<br />
+'tools.encode.encoding': 'utf-8',<br />
+'server.socket_port': 8080,<br />
+'server.socket_timeout': 60,<br />
+'server.thread_pool': 10,<br />
+'server.environment': 'production',<br />
+'log.screen': True#,<br />
+#'request.show_tracebacks': False<br />
+})</p>
+<pre><code># Request-Handler definieren      
+cherrypy.tree.mount(application.Application_cl(), &#39;/&#39;, staticConfig_o)     
+
+# Start server     
+cherrypy.engine.start()     
+cherrypy.engine.block()     </code></pre>
+<h1 id="section-1">--------------------------------------</h1>
+<p>if <strong>name</strong> == '<strong>main</strong>':<br />
+#--------------------------------------<br />
+main()<br />
+# EOF</p>
+</body>
+</html>

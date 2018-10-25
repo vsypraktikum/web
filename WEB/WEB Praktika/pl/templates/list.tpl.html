@@ -1,0 +1,24 @@
+<!-- Template -->
+<!-- Contentbereich -->
+<table>
+   <tr><th>Anrede</th><th>Name</th><th>Vorname</th><th>Titel</th><th>Geburtsdatum</th><th>Straße</th><th>Hausnummer</th><th>Adresszusatz</th><th>Postleitzahl</th><th>Ort</th></tr>
+   @var entry_a;@
+   @var loop_i;@
+   @for loop_i = 0; loop_i < context.length; loop_i++@
+      @entry_a = context[loop_i];@
+      <tr id="#entry_a['id']#">
+         <td>#entry_a['Anrede']#</td>
+         <td>#entry_a['Name']#</td>
+         <td>#entry_a['Vorname']#</td>
+         <td>#entry_a['Titel']#</td>
+         <td>#entry_a['Geburtsdatum']#</td>
+         <td>#entry_a['Strasse']#</td>
+         <td>#entry_a['Hausnummer']#</td>
+         <td>#entry_a['Adresszusatz']#</td>
+         <td>#entry_a['Postleitzahl']#</td>
+         <td>#entry_a['Ort']#</td>
+      </tr>
+   @endfor@
+</table>
+<button id="idShowListEntry">Anzeigen</button><button id="idDeleteListEntry">Löschen</button><button id="idNewListEntry">Neuer Eintrag</button>
+<!-- EOF -->

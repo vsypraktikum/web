@@ -1,0 +1,13 @@
+strong {
+	color: red;
+	font-size: 200%;
+}
+/*.carrot {color: orange;}*/
+strong.spinach {color: green;}
+#first {font-style: italic;}
+p#first.test {color: blue;}
+
+ul+div{
+	color: red;
+}
+

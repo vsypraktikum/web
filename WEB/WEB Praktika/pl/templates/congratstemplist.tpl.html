@@ -1,0 +1,27 @@
+<!-- Template -->
+<!-- Contentbereich -->
+<h3>Bereits importierte Gratulationsschreiben</h3>
+<table>
+        <tr><th>ID</th><th>Pfad/Dateiname</th></tr>
+        @var entry_a;@
+        @var loop_i;@
+        @for loop_i = 0; loop_i < context.length; loop_i++@
+           @entry_a = context[loop_i];@
+           <tr id="#entry_a['ID']#">
+              <td>#entry_a['ID']#</td>
+              <td>#entry_a['Path']#</td>
+           </tr>
+        @endfor@
+     </table>
+     <button id="idShowListEntryC">Anzeigen</button>
+     <button id="DeleteC">Löschen</button>
+     <br>
+     <br>
+     <br>
+     <h3>Importierung neuer Vorlagen mittels Pfad:</h3>
+     <form id="Pathdata">
+        <input type="text" id="Path" name="Path"/>
+
+     </form>
+     <button id="ImportPath">Importieren</button>
+     <!-- EOF -->

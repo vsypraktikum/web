@@ -1,0 +1,19 @@
+<!-- Template -->
+<!-- Contentbereich -->
+<h3>Wählen sie eine Vorlage zum importieren aus und geben sie eine Beschreibung an!</h3>
+<table>
+@var entry_a;@
+@var loop_i;@
+@for loop_i = 0; loop_i < context.length; loop_i++@
+   @entry_a = context[loop_i];@
+   <tr id="#entry_a#">
+      <td>#entry_a#</td>
+   </tr>
+ 
+@endfor@
+</table>
+<form id="beschreibungsdaten">
+    <input type="text" name=Beschreibung id=Beschreibung>
+</form>
+<button id="importEntry">Anzeigen</button>
+<!-- EOF -->

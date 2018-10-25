@@ -1,0 +1,18 @@
+	a	{ /* alle p-Elemente, d.h. alle Absätze */ 
+		color: gray; /* Textfarbe */ 
+		appearance: button;
+	}
+	
+	div { 
+		margin-left: 200px; 
+	}
+	
+	table {  
+		border: 1px solid; 
+		border-collapse: collapse; 
+	}
+	
+	th, td {
+		border: 1px solid;
+		color: black;
+	}

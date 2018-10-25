@@ -1,0 +1,19 @@
+<!-- Template -->
+<!-- Contentbereich -->
+<h3 style="font-size:72; color: red"> GRATULATION </h3>
+
+<p>
+Hallo #context['Anrede']# #context['Vorname']# #context['Name']#
+</p>
+
+<div>
+Zu Ihrem Geburtstag am #context['Geburtsdatum']# wuenschen wir Ihnen alles Gute.
+Wir hoffen das Sie in #context['Ort']# schoen feiern koennen und haben ganz Deutschland per Facebook-Party nach 
+#context['Strasse']#, #context['Hausnummer']#,  #context['Postleitzahl']# eingeladen um Ihnen Ihren Geburtstag richtig schoen zu versauen. 
+</div>
+Wir wünschen Ihnen einen weiterhin schönen Tag,
+
+<h5 style="color: green">Ihre lustige Pensionaersverwaltung. </h5>
+
+:)
+<!-- EOF -->

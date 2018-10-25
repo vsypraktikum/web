@@ -1,0 +1,43 @@
+body {
+    background-color: white;
+}
+
+h1 {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	color: black;
+    text-align: left;
+}
+
+p { /* alle p-Elemente, d.h. alle Absätze */
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	color: black; /* Textfarbe */
+}
+table { /* alle table-Elemente, d.h. alle Tabellen */
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border: 3px solid; /* Rahmen um die Tabelle, nicht die Zellen! */
+    border-collapse: collapse; /* kein Leerraum zwischen einzelnen Zellen */
+	width: 50%;
+}
+th, td { /* alle th- und td-Element, d.h. alle Header - und alle einfachen Zellen */
+	border: 1px solid #ddd;    /* Rahmen um die Zellen! */
+    padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2;}
+
+tr:hover {background-color: #ddd;}
+
+label {
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    width: 10em;
+    display: block;
+    float: left;
+}
+
+th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+}
